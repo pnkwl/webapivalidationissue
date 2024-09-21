@@ -1,0 +1,26 @@
+@WebApi_HostAddress = http://localhost:5154
+
+### Does not accept lvl 2 non polymorph model collection
+POST {{WebApi_HostAddress}}/WeatherForecast/post-no-polymorph
+Content-Type: application/json
+
+{
+  "NonPolymorphicModelsLvl1": [
+    {
+      "ModelsLvl2": null
+    }
+  ]
+}
+
+### Accept lvl 2 models collection of the derived type model
+POST {{WebApi_HostAddress}}/WeatherForecast/post-polymorph
+Content-Type: application/json
+
+{
+  "PolymorphicModelsLvl1": [
+    {
+      "$t": "derivedtype",
+      "ModelsLvl2": null
+    }
+  ]
+}
